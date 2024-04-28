@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import ItemCard from "../../components/ItemCard/ItemCard";
 import { items } from "../../test/Items";
 import ItemList from '../../components/ItemList/ItemList';
 
 const SearchItem = () => {
     const [ lost, setLost ] = useState([]);
-    const [ searchfield, setSearchfield ] = useState('');
+    const [ searchTerm, setSearchTerm ] = useState('');
 
     useEffect(()=>{
         setLost(items);
     },[]);
 
+    const onSearchSubmit = (searchTerm) => {
+        setSearchTerm(searchTerm);
+    }
+    
+    const filteredItems = lost.filter(item => 
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return(
         <div className="tc">
-            <SearchBar />
-            <ItemList lost={lost}/>
+            <SearchBar onSearchSubmit={onSearchSubmit}/>
+            <ItemList lost={filteredItems}/>
         </div>
     );
 }
