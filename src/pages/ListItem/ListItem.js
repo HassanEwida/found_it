@@ -7,25 +7,50 @@ const ListItem = () => {
     const [ newCard, setNewCard ] = useState("");
     
     return(
-        <div className="pa10 br3 ba dark-gray b--white-10 mv4 w-150 w-100-m w-100-l mw6 shadow-5 center b f3">
-            <form  onSubmit={handleSubmit((newCard) => setNewCard(JSON.stringify(newCard)))}>
-                <label>Name of Object:</label><br/> 
-                <input {...register("name", {required: true})} placeholder="Name" /><br/>
-                <label>Brand:</label><br/> 
-                <input {...register("brand")} placeholder="Brand" /><br/>
-                <label>Color:</label><br/> 
-                <input {...register("color")} placeholder="Color" /><br/>
-                <label>Location when found:</label><br/> 
-                <input {...register("location")} placeholder="Location" /><br/>
-                <label>Time when found:</label><br/> 
-                <input {...register("time")} type="datetime-local" /><br/>
-                <label>Founder's Name::</label><br/> 
-                <input {...register("founderName", {required: true})} placeholder="Your Name" /><br/>
-                <label>Founder's Contact Information:</label><br/> 
-                <input {...register("founderContact", {required: true})} placeholder="Phone number/email" /><br/>
-                <label>Image of the Object:</label><br/> 
-                <input {...register("image")} type="file" accept="image/*" /><br/>
-                <button type="submit" className="button-52" style={{marginTop: 20}}>Create new item</button>
+        <div className="pa5">
+            <form onSubmit={handleSubmit((newCard) => setNewCard(JSON.stringify(newCard)))} style={{textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px'}}>
+                <div className="input-wrapper">
+                    <input {...register("name", {required: true})} className="input-field" />
+                    <span className="input-label">Name of Object:</span>
+                    <span className="input-shadow"></span>
+                </div>
+                <div className="input-wrapper">
+                    <input {...register("brand")} className="input-field" />
+                    <span className="input-label">Brand:</span>
+                    <span className="input-shadow"></span>
+                </div>
+                <div className="input-wrapper">
+                    <input {...register("color")} className="input-field" />
+                    <span className="input-label">Color:</span>
+                    <span className="input-shadow"></span>
+                </div>
+                <div className="input-wrapper">
+                    <input {...register("location")} className="input-field" />
+                    <span className="input-label">Location when found:</span>
+                    <span className="input-shadow"></span>
+                </div>
+                <div className="input-wrapper">
+                    <input {...register("time")} type="datetime-local" className="input-field" />
+                    <span className="input-label">Time when found:</span>
+                    <span className="input-shadow"></span>
+                </div>
+                <div className="input-wrapper">
+                    <input {...register("founderName", {required: true})} className="input-field" />
+                    <span className="input-label">Founder's Name:</span>
+                    <span className="input-shadow"></span>
+                </div>
+                <div className="input-wrapper">
+                    <input {...register("founderContact", {required: true})} className="input-field" />
+                    <span className="input-label">Founder's Contact Information:</span>
+                    <span className="input-shadow"></span>
+                </div>
+                <div className="input-wrapper">
+                    <input {...register("image")} type="file" accept="image/*" className="input-field" />
+                    <span className="input-label">Image of the Object:</span>
+                    <span className="input-shadow"></span>
+                </div>
+                <p>{console.log(newCard)}</p>
+                <button type="submit" className="button-52">Create new item</button>
             </form>
         </div>
     );
