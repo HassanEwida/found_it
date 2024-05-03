@@ -64,8 +64,89 @@
     padding: 13px 50px 13px;
   }
 }
-
+/* ListItem.css */
 .input-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px;
+  outline: 0;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  color: #f5f5dc;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+  transition: color 0.2s; /* Add transition for font color */
+}
+
+.input-field:focus {
+  border-color: black;
+  color: #f5f5dc; /* Change font color when focused */
+}
+
+.input-label {
+  position: absolute;
+  top: 13px;
+  left: 20px;
+  color: #000; /* Always have black color */
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  transition: 0.2s;
+  pointer-events: none;
+  z-index: 1; /* Ensure label stays above input border */
+  background-color: #f5f5dc; /* Match background with input for effect */
+  padding: 0 5px; /* Adjust padding to integrate with border */
+}
+
+.input-field:focus + .input-label,
+.input-field:not(:placeholder-shown) + .input-label {
+  transform: translateY(-20px); /* Move label up when input is focused or not empty */
+  font-size: 12px; /* Shrink font size when label is moved */
+}
+
+.input-shadow {
+  content: "";
+  background-color: darkgrey;
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: top 0.2s, left 0.2s, background-color 0.2s; /* Add transition for animation */
+  z-index: -1;
+  pointer-events: none;
+}
+
+.input-wrapper:focus-within .input-shadow {
+  top: 0;
+  left: 0;
+  background-color: black;
+}
+
+@media (min-width: 768px) {
+  .input-field {
+    padding: 13px 20px;
+  }
+}
+
+
+
+
+
+
+
+
+/* .input-wrapper {
   position: relative;
   margin-bottom: 20px;
 }
@@ -134,5 +215,5 @@
   .input-field {
     padding: 13px 20px 13px;
   }
-}
+} */
   
