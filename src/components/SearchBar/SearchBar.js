@@ -15,13 +15,17 @@ const SearchBar = ({ onSearchSubmit }) => {
     }
 
     return(
-        <div>
-                <input className='pa3 ba b--black bg-white w-60' 
-                type='search' 
-                placeholder='search item'
-                value={searchTerm}
-                onChange={onSearchChange}
-                />
+        <div className='pa5'>
+                <div className="input-wrapper">
+                    <input className='input-field' 
+                    type='search' 
+                    value={searchTerm}
+                    onChange={onSearchChange}
+                    
+                    />
+                    <span className="input-label">Search Item</span>
+                    <span className="input-shadow"></span>
+                </div>
                 <button 
                 className="button-52" 
                 style={{marginLeft: '5px'}} 
