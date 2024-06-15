@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import './ListItem.css';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { Link } from 'react-router-dom';
 
 function LocationMarker({ onLocationSelect }) {
   const [position, setPosition] = useState(null);
@@ -53,58 +54,63 @@ const ListItem = () => {
   };
 
   return (
-    <div className="pa5">
-      <form onSubmit={handleSubmit(onSubmit)} style={{ textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px' }}>
-        <div className="input-wrapper">
-          <input {...register('name', { required: true })} className="input-field" />
-          <span className="input-label">Name of Object:</span>
-          <span className="input-shadow"></span>
-        </div>
-        <div className="input-wrapper">
-          <input {...register('brand')} className="input-field" />
-          <span className="input-label">Brand:</span>
-          <span className="input-shadow"></span>
-        </div>
-        <div className="input-wrapper">
-          <input {...register('color')} className="input-field" />
-          <span className="input-label">Color:</span>
-          <span className="input-shadow"></span>
-        </div>
-        <div className="input-wrapper">
-          <input {...register('time')} type="datetime-local" className="input-field" />
-          <span className="input-label">Time when found:</span>
-          <span className="input-shadow"></span>
-        </div>
-        <div className="input-wrapper">
-          <input {...register('founderName', { required: true })} className="input-field" />
-          <span className="input-label">Founder's Name:</span>
-          <span className="input-shadow"></span>
-        </div>
-        <div className="input-wrapper">
-          <input {...register('founderContact', { required: true })} className="input-field" />
-          <span className="input-label">Founder's Contact Information:</span>
-          <span className="input-shadow"></span>
-        </div>
-        <div className="input-wrapper">
-          <input {...register('image')} type="file" accept="image/*" className="input-field" />
-          <span className="input-label">Image of the Object:</span>
-          <span className="input-shadow"></span>
-        </div>
-        <div className="input-wrapper">
-        <span>Location when found:</span>
-          {userLocation ? (
-            <MapContainer center={userLocation} zoom={13} style={{ height: '400px' }}>
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              <LocationMarker onLocationSelect={(lat, lng) => setValue('location', `${lat},${lng}`)} />
-            </MapContainer>
-          ) : (
-            <p>Getting user location...</p>
-          )}
-          <input type="hidden" {...register('location')} />
-        </div>
-        <p>{console.log(newCard)}</p>
-        <button type="submit" className="button-52">Create new item</button>
-      </form>
+    <div>
+      <Link to="/home">
+      <nav style={{display: 'flex', position: 'start', marginLeft: '30px'}}><button className="button-52">Back</button></nav>
+      </Link>
+      <div className="pa5">
+        <form onSubmit={handleSubmit(onSubmit)} style={{ textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px' }}>
+          <div className="input-wrapper">
+            <input {...register('name', { required: true })} className="input-field" />
+            <span className="input-label">Name of Object:</span>
+            <span className="input-shadow"></span>
+          </div>
+          <div className="input-wrapper">
+            <input {...register('brand')} className="input-field" />
+            <span className="input-label">Brand:</span>
+            <span className="input-shadow"></span>
+          </div>
+          <div className="input-wrapper">
+            <input {...register('color')} className="input-field" />
+            <span className="input-label">Color:</span>
+            <span className="input-shadow"></span>
+          </div>
+          <div className="input-wrapper">
+            <input {...register('time')} type="datetime-local" className="input-field" />
+            <span className="input-label">Time when found:</span>
+            <span className="input-shadow"></span>
+          </div>
+          <div className="input-wrapper">
+            <input {...register('founderName', { required: true })} className="input-field" />
+            <span className="input-label">Founder's Name:</span>
+            <span className="input-shadow"></span>
+          </div>
+          <div className="input-wrapper">
+            <input {...register('founderContact', { required: true })} className="input-field" />
+            <span className="input-label">Founder's Contact Information:</span>
+            <span className="input-shadow"></span>
+          </div>
+          <div className="input-wrapper">
+            <input {...register('image')} type="file" accept="image/*" className="input-field" />
+            <span className="input-label">Image of the Object:</span>
+            <span className="input-shadow"></span>
+          </div>
+          <div className="input-wrapper">
+          <span>Location when found:</span>
+            {userLocation ? (
+              <MapContainer center={userLocation} zoom={13} style={{ height: '400px' }}>
+                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                <LocationMarker onLocationSelect={(lat, lng) => setValue('location', `${lat},${lng}`)} />
+              </MapContainer>
+            ) : (
+              <p>Getting user location...</p>
+            )}
+            <input type="hidden" {...register('location')} />
+          </div>
+          <p>{console.log(newCard)}</p>
+          <button type="submit" className="button-52">Create new item</button>
+        </form>
+      </div>
     </div>
   );
 };

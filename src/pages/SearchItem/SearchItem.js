@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { items } from "../../test/Items";
 import ItemList from '../../components/ItemList/ItemList';
+import { Link } from 'react-router-dom';
 
 const SearchItem = () => {
     const [ lost, setLost ] = useState([]);
@@ -20,9 +21,14 @@ const SearchItem = () => {
     );
 
     return(
-        <div className="tc">
-            <SearchBar onSearchSubmit={onSearchSubmit}/>
-            <ItemList lost={filteredItems}/>
+        <div>
+            <Link to="/home">
+                <nav style={{display: 'flex', position: 'start', marginLeft: '30px'}}><button className="button-52">Back</button></nav>
+            </Link>
+            <div className="tc">
+                <SearchBar onSearchSubmit={onSearchSubmit}/>
+                <ItemList lost={filteredItems}/>
+            </div>
         </div>
     );
 }
