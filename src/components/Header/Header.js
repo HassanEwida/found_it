@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import './Header.css';
 
 const Logo = ({ path }) => {
-    if(path !== "/Login" || path !== "/Register"){
+    const renderLogo = () => {
         return(
-            <Link to={"/home"}>
             <header className="center w-100" style={{paddingTop: 10, paddingBottom: 50,}}>
                 <Tilt options={{ max: 25, scale: 1.1 }} preserve3dEnable={true} className="tilt-container">
                     <div className='tilt-box'>
@@ -15,8 +14,13 @@ const Logo = ({ path }) => {
                     </div>
                 </Tilt>
             </header>
-            </Link>
+
         );
+    };
+    if(path !== "/login" && path !== "/register" && path !== "/Login" && path !== "/Register"){
+        return <Link to='/home'>{renderLogo()}</Link>
+    } else {
+        return renderLogo();
     }
 }
 
