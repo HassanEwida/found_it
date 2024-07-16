@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightToBracket, faPen } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const Login = () => {
@@ -8,6 +11,8 @@ const Login = () => {
     const [ newCredintials, setNewCredintials ] = useState("");
     return(
         <div className="pa5">
+        <h1 className="welcome-heading">Welcome to Found It!</h1>
+        <p className="motto">The virtual lost & found, at your fingertips.</p>
         <h1 className="f1">Login</h1>
         <form onSubmit={handleSubmit((newCredintials) => setNewCredintials(JSON.stringify(newCredintials)))} style={{textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px'}}>
             <div className="input-wrapper">
@@ -22,13 +27,19 @@ const Login = () => {
             </div>
 
             <p>{console.log(newCredintials)}</p>
-            <Link to='/home'>
-                <button type="submit" className="button-52">Login</button>
+            <Link to="/home">
+                <button type="submit" className="button-52">
+                <FontAwesomeIcon icon={faRightToBracket} />
+                <span style={{ marginLeft: '10px' }}>Login</span>
+                </button>
             </Link>
 
             <p>New user?</p>
             <Link to='/Register'>
-                <button type="submit" className="button-52">Register</button>
+                <button type="submit" className="button-52">
+                <FontAwesomeIcon icon={faPen} />
+                <span style={{ marginLeft: '10px' }}>Register</span>
+                </button>
             </Link>
         </form>
     </div>

@@ -4,6 +4,8 @@ import './ListItem.css';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 function LocationMarker({ onLocationSelect }) {
   const [position, setPosition] = useState(null);
@@ -55,9 +57,14 @@ const ListItem = () => {
 
   return (
     <div>
-      <Link to="/home">
-      <nav style={{display: 'flex', position: 'start', marginLeft: '30px'}}><button className="button-52">Back</button></nav>
-      </Link>
+      <nav style={{display: 'flex', position: 'start', marginLeft: '30px'}}>
+          <Link to="/home">
+              <button className="button-52">
+              <FontAwesomeIcon icon={faArrowLeft} />
+              <span style={{ marginLeft: '10px' }}>Back</span>
+              </button>
+          </Link>
+      </nav>
       <div className="pa5">
         <form onSubmit={handleSubmit(onSubmit)} style={{ textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px' }}>
           <div className="input-wrapper">
@@ -73,6 +80,16 @@ const ListItem = () => {
           <div className="input-wrapper">
             <input {...register('color')} className="input-field" />
             <span className="input-label">Color:</span>
+            <span className="input-shadow"></span>
+          </div>
+          <div className="input-wrapper">
+            <select {...register("category")} className="input-field">
+              <option value="">Select Category</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Clothing">Clothing</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+            <span className="input-label">Category:</span>
             <span className="input-shadow"></span>
           </div>
           <div className="input-wrapper">
@@ -108,7 +125,10 @@ const ListItem = () => {
             <input type="hidden" {...register('location')} />
           </div>
           <p>{console.log(newCard)}</p>
-          <button type="submit" className="button-52">Create new item</button>
+          <button type="submit" className="button-52">
+          <FontAwesomeIcon icon={faPlus} />
+          <span style={{marginLeft: "10px"}}>Create new item</span>
+          </button>
         </form>
       </div>
     </div>

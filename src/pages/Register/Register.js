@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -9,9 +11,14 @@ const Register = () => {
     const [ newRegister, setNewRegister ] = useState("");
     return(
         <div>
-            <Link to="/">
-                <nav style={{display: 'flex', position: 'start', marginLeft: '30px'}}><button className="button-52">Back</button></nav>
-            </Link>
+                <nav style={{display: 'flex', position: 'start', marginLeft: '30px'}}>
+                    <Link to="/">
+                        <button className="button-52">
+                        <FontAwesomeIcon icon={faArrowLeft} />
+                        <span style={{ marginLeft: '10px' }}>Back</span>
+                        </button>
+                    </Link>
+                </nav>
             <div className="pa5">
                 <h1 className="f1">Register</h1>
                 <form onSubmit={handleSubmit((newRegister) => setNewRegister(JSON.stringify(newRegister)))} style={{textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px'}}>
@@ -36,7 +43,10 @@ const Register = () => {
                         <span className="input-shadow"></span>
                     </div>
                     <p>{console.log(newRegister)}</p>
-                    <button type="submit" className="button-52">Register</button>
+                    <button type="submit" className="button-52">
+                    <FontAwesomeIcon icon={faPen}/>
+                    <span style={{ marginLeft: '10px' }}>Register</span>
+                    </button>
                 </form>
             </div>
         </div>

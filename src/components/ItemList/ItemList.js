@@ -12,7 +12,8 @@ const ItemList = ({ lost }) => {
         time={lost[i].time}
         founderName={lost[i].founderName}
         founderContact={lost[i].founderContact}
-        image={lost[i].image}/>
+        image={lost[i].image}
+        category={lost[i].category}/>
     })
     return  (
         <div>

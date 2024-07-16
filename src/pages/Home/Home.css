@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap');
+
+.welcome-section {
+    text-align: center;
+    padding: 60px 0;
+    
+}
+
+.welcome-heading {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(4rem, 8vw, 8rem);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: scale-in 1s ease-in-out;
+}
+
+.motto {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3rem, 8vw, 5rem);
+    margin-bottom: 30px;
+}
+
+.description {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: 15px;
+}
+
+.button-container {
+    margin-top: 40px;
+}
+
+.button-52 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 600;
+    padding: 15px 30px;
+    margin: 0 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.button-52:hover {
+    transform: scale(1.05);
+}
+
+.button-text {
+    margin-left: 10px;
+}
