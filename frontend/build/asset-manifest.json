@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a4f35622.css",
+    "main.js": "/static/js/main.f1efcd52.js",
+    "static/js/453.ad06c977.chunk.js": "/static/js/453.ad06c977.chunk.js",
+    "static/media/found_it_logo.png": "/static/media/found_it_logo.441cc95e4f2462877304.png",
+    "index.html": "/index.html",
+    "main.a4f35622.css.map": "/static/css/main.a4f35622.css.map",
+    "main.f1efcd52.js.map": "/static/js/main.f1efcd52.js.map",
+    "453.ad06c977.chunk.js.map": "/static/js/453.ad06c977.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a4f35622.css",
+    "static/js/main.f1efcd52.js"
+  ]
+}
