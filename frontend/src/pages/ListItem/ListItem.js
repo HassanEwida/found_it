@@ -82,10 +82,6 @@ const ListItem = () => {
     }
   };
 
-  // const onSubmit = (_newCard_) => {
-  //   const updatedCard = { ..._newCard_ };
-  //   setNewCard(JSON.stringify(updatedCard));
-  // };
   const onSubmit = async (data) => {
     if (state?.token) {
       try {
@@ -97,7 +93,7 @@ const ListItem = () => {
             color: data.color,
             location: data.location,
             time: data.time,
-            image: data.imageBase64,
+            image: imageBase64,
             category: data.category,
             contactInfo: data.founderContact,
           },

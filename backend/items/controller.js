@@ -6,7 +6,7 @@ const listItem = async (req, res, next) => {
 
   await Item.create({
     ...item,
-    founder: req.user
+    founder: req.user.username
   });
 
   res.status(200).send(item);

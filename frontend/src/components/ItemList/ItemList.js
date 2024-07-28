@@ -10,13 +10,13 @@ const ItemList = ({ lost }) => {
         color={lost[i].color}
         location={lost[i].location}
         time={lost[i].time}
-        founderName={lost[i].founderName}
-        founderContact={lost[i].founderContact}
+        founder={lost[i].founder}
+        contactInfo={lost[i] .contactInfo}
         image={lost[i].image}
         category={lost[i].category}/>
     })
     return  (
-        <div>
+        <div className="item-card-container">
             {CardComponent}
         </div>
     );
