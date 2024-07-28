@@ -8,7 +8,8 @@ const itemSchema = new mongoose.Schema({
   time: Date,
   founder: { type: mongoose.Types.ObjectId, ref: "Owner" },
   image: String,
-  category: String
+  category: String,
+  contactInfo: String,
 });
 
 const Item = mongoose.model('Item', itemSchema);

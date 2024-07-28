@@ -23,6 +23,7 @@ const customIcon = new L.Icon({
 function LocationMarker({ onLocationSelect }) {
   const [position, setPosition] = useState(null);
   const [placeName, setPlaceName] = useState('');
+  const [imageBase64, setImageBase64] = useState(null);
 
   const fetchPlaceName = async (lat, lng) => {
     try {
@@ -49,34 +50,10 @@ const ListItem = () => {
   const { register, handleSubmit, setValue } = useForm();
   const [newCard, setNewCard] = useState('');
   const [userLocation, setUserLocation] = useState(null);
+  const [imageBase64, setImageBase64] = useState(null);
 
   const navigate = useNavigate();
   const { state, setState } = useContext(AppContext);
-
-
-
-  useEffect(() => {
-    if(state) {
-      if(state?.token) {
-        axios.post(`http://localhost:3001/items/listItem`, {
-          headers: {
-            "Authorization": "Bearer " + state.token
-          }
-        }).then(response => {
-          const result = response.data;
-
-          onSubmit(result)
-        }).catch(err => {
-          if(err.response.status === 401) {
-            alert('Unauthorized')
-            navigate('/login');
-          }
-        });
-      } else {
-        navigate('/login');
-      }
-    } 
-  }, [state]);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -94,36 +71,57 @@ const ListItem = () => {
     }
   }, []);
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImageBase64(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   // const onSubmit = (_newCard_) => {
   //   const updatedCard = { ..._newCard_ };
   //   setNewCard(JSON.stringify(updatedCard));
   // };
-  const onSubmit = async (newItem) => {
+  const onSubmit = async (data) => {
+    if (state?.token) {
+      try {
+        await axios.post(
+          'http://localhost:3001/items/listItem',
+          {
+            name: data.name,
+            brand: data.brand,
+            color: data.color,
+            location: data.location,
+            time: data.time,
+            image: data.imageBase64,
+            category: data.category,
+            contactInfo: data.founderContact,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${state.token}`
+            }
+          }
+        );
 
-    try {
-        const { user, token } = (await axios.post(`http://localhost:3001/items/listItem`, {
-          name: newItem.name,
-          brand: newItem.brand,
-          color: newItem.color,
-          location: newItem.Location,
-          time: newItem.time,
-          image: newItem.image,
-          category: newItem.category,
-          contactInfo: newItem.founderContact,
-        })).data;
-
-
-        setState({
-            user,
-            token
-        });
-
+        alert('Item listed successfully!');
         navigate('/home');
-
-    } catch(err) {
-        console.log(err);
+      } catch (error) {
+        if (error.response && error.response.status === 401) {
+          alert('Unauthorized');
+          navigate('/login');
+        } else {
+          console.error('Error listing item', error);
+        }
+      }
+    } else {
+      navigate('/login');
     }
-}
+  };
 
 
   return (
@@ -174,7 +172,7 @@ const ListItem = () => {
             <span className="input-shadow"></span>
           </div>
           <div className="input-wrapper">
-            <input {...register('image')} type="file" accept="image/*" className="input-field" />
+            <input {...register('image')} type="file" accept="image/*" onChange={handleImageChange} className="input-field" />
             <span className="input-label">Image of the Object:</span>
             <span className="input-shadow"></span>
           </div>

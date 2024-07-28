@@ -9,6 +9,7 @@ import SearchItem from './pages/SearchItem/SearchItem';
 import ListItem from './pages/ListItem/ListItem';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import Profile from './pages/Profile/Profile'
 import './App.css';
 import { AppContext } from './app-context';
 
@@ -27,6 +28,7 @@ function App() {
             <Route path='/' element={<Navigate to='/login' replace />} />
             <Route exact path='/home' element={<Home />} />
             <Route path='/SearchItem' element={<SearchItem />} />
+            <Route path='/Profile' element={<Profile />} />
             <Route path='/ListItem' element={<ListItem />} />
             <Route path='/about' element={<About />} />
             <Route path='/login' element={<Login />} />
