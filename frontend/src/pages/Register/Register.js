@@ -1,14 +1,40 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import axios from "axios";
+import { AppContext } from "../../app-context";
 
 
 
 const Register = () => {
     const { register, handleSubmit } = useForm();
-    const [ newRegister, setNewRegister ] = useState("");
+    
+    const navigate = useNavigate();
+    
+    const { state, setState } = useContext(AppContext);
+
+    const onRegister = async (credentials) => {
+
+        try {
+            const { user, token} = (await axios.post(`http://localhost:3001/auth/register`, {
+                email: credentials.email,
+                username: credentials.username,
+                password: credentials.password,
+            })).data;
+
+            setState({
+                user,
+                token
+            });
+
+            navigate('/login');
+
+        } catch(err) {
+            console.log(err);
+        }
+    }
     return(
         <div>
                 <nav style={{display: 'flex', position: 'start', marginLeft: '30px'}}>
@@ -21,9 +47,9 @@ const Register = () => {
                 </nav>
             <div className="pa5">
                 <h1 className="f1">Register</h1>
-                <form onSubmit={handleSubmit((newRegister) => setNewRegister(JSON.stringify(newRegister)))} style={{textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px'}}>
+                <form onSubmit={handleSubmit(onRegister)} style={{textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px'}}>
                     <div className="input-wrapper">
-                        <input {...register("username", {required: true})} type="email" className="input-field" />
+                        <input {...register("email", {required: true})} type="email" className="input-field" />
                         <span className="input-label">Email:</span>
                         <span className="input-shadow"></span>
                     </div>
@@ -42,7 +68,6 @@ const Register = () => {
                         <span className="input-label">Confirm Password:</span>
                         <span className="input-shadow"></span>
                     </div>
-                    <p>{console.log(newRegister)}</p>
                     <button type="submit" className="button-52">
                     <FontAwesomeIcon icon={faPen}/>
                     <span style={{ marginLeft: '10px' }}>Register</span>
