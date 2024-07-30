@@ -1,29 +1,13 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import SearchBar from "../../components/SearchBar/SearchBar";
-
 import ItemList from '../../components/ItemList/ItemList';
+import Navbar from "../../components/Navbar/Navbar";
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios";
 import { AppContext } from "../../app-context";
 
-
-// const SearchItem = () => {
-//     const [ lost, setLost ] = useState([]);
-//     const [ searchTerm, setSearchTerm ] = useState('');
-
-//     useEffect(()=>{
-//         setLost(items);
-//     },[]);
-
-//     const onSearchSubmit = (searchTerm) => {
-//         setSearchTerm(searchTerm);
-//     }
-    
-//     const filteredItems = lost.filter(item => 
-//         item.name.toLowerCase().includes(searchTerm.toLowerCase())
-//     );
 const SearchItem = () => {
     const [lost, setLost] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
@@ -77,6 +61,8 @@ const SearchItem = () => {
                         </button>
                     </Link>
                 </nav>
+                <Navbar />
+                <nav style={{ display: 'flex', position: 'end', marginLeft: '30px' }}></nav>
             <div>
                 <SearchBar onSearchSubmit={onSearchSubmit}/>
                 <ItemList lost={filteredItems}/>

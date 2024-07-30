@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { AppContext } from '../../app-context';
+import Navbar from '../../components/Navbar/Navbar';
 
 const customIcon = new L.Icon({
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
@@ -130,6 +131,8 @@ const ListItem = () => {
           </button>
         </Link>
       </nav>
+      <Navbar />
+      <nav style={{ display: 'flex', position: 'end', marginLeft: '30px' }}></nav>
       <div className="pa5">
         <form onSubmit={handleSubmit(onSubmit)} style={{ textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px' }}>
           <div className="input-wrapper">

@@ -66,8 +66,7 @@ const register = async (req, res, next) => {
 
 const signOut = async (req, res, next) => {
   tokenManager.deleteToken(req.token);
-  res.redirect('./login');
-  // res.status(200).send();
+  res.status(200).json({ message: 'Successfully signed out'});
 }
 
 const hashPassword = (password) => {

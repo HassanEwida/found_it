@@ -1,4 +1,4 @@
-const authMiddleware = require('../middlewares/auth.middleware');
+    const authMiddleware = require('../middlewares/auth.middleware');
 const { login, register, signOut } = require('./controller');
 const express = require("express");
 
@@ -8,4 +8,4 @@ router.post('/login', login);
 router.post('/register', register);
 router.post('/signOut', authMiddleware, signOut);
 
-module.exports = { router }
+module.exports = { router };
