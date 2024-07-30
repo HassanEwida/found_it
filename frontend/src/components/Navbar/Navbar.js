@@ -3,8 +3,9 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppContext } from '../../app-context';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import './Navbar.css'; // Create and import CSS file for styling
 
 const Navbar = () => {
     const { state, setState } = useContext(AppContext);
@@ -33,11 +34,18 @@ const Navbar = () => {
     };
 
   return (
-    <nav className="navbar">
-      <ul className="navbar-links">
-        <li><Link to="/profile">Profile</Link></li>
-        <li><button onClick={handleSignOut}>Sign Out</button></li>
-      </ul>
+    <nav style={{ position: 'end', marginLeft: '30px'}}>
+        <Link to={"./profile"}>
+        <button className="button-52">
+          <FontAwesomeIcon icon={faUser} />
+          <span style={{ marginLeft: '10px' }}>Profile</span>
+        </button>
+        </Link>
+
+        <button className="button-52" onClick={handleSignOut}>
+          <FontAwesomeIcon icon={faRightFromBracket} />
+          <span style={{ marginLeft: '10px' }}>Sign Out</span>
+        </button>
     </nav>
   );
 };

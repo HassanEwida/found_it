@@ -60,9 +60,9 @@ const SearchItem = () => {
                         <span style={{ marginLeft: '10px' }}>Back</span>
                         </button>
                     </Link>
+                    
                 </nav>
                 <Navbar />
-                <nav style={{ display: 'flex', position: 'end', marginLeft: '30px' }}></nav>
             <div>
                 <SearchBar onSearchSubmit={onSearchSubmit}/>
                 <ItemList lost={filteredItems}/>

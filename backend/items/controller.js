@@ -19,7 +19,7 @@ const searchItem = async (req, res, next) => {
 }
 
 const getAllMyItems = async (req, res, next) => {
-  const items = await Item.find({ founder: req.user });
+  const items = await Item.find({ founderId: req.user.ObjectId });
 
   return res.status(200).send(items);
 }

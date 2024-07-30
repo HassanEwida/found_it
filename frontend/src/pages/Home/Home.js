@@ -10,7 +10,9 @@ const Home = () => {
 
     return (
         <div className="welcome-section">
+            <nav>
             <Navbar />
+            </nav>
              <nav style={{ display: 'flex', position: 'end', marginLeft: '30px' }}></nav>
             <h1 className="welcome-heading">Welcome to Found It!</h1>
             <p className="motto">The virtual lost & found, at your fingertips.</p>

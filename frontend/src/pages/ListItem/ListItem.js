@@ -132,6 +132,7 @@ const ListItem = () => {
         </Link>
       </nav>
       <Navbar />
+      
       <nav style={{ display: 'flex', position: 'end', marginLeft: '30px' }}></nav>
       <div className="pa5">
         <form onSubmit={handleSubmit(onSubmit)} style={{ textAlign: 'left', margin: 'auto', width: '100%', maxWidth: '800px' }}>
