@@ -5,6 +5,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
 import Modal from 'react-modal';
+import modalStyling from './modalStyling.css';
 
 const customIcon = new L.Icon({
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
@@ -58,7 +59,7 @@ const EditItemModal = ({ isOpen, onRequestClose, item, token, onSave }) => {
 
   const onSubmit = async (data) => {
     try {
-      await axios.put(`http://localhost:3001/items/updateItem/${item._id}`, {
+      const response = await axios.put(`http://localhost:3001/items/modifyItem/${item._id}`, {
         ...data,
         image: imageBase64,
       }, {
@@ -66,13 +67,17 @@ const EditItemModal = ({ isOpen, onRequestClose, item, token, onSave }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      onSave();
-      onRequestClose();
+      
+      if (response.status === 200) {
+        onSave(response.data);
+        onRequestClose();
+      } else {
+        console.error('Unexpected response status:', response.status);
+      }
     } catch (error) {
-      console.error('Error updating item:', error);
+      console.error('Error updating item:', error.response ? error.response.data : error.message);
     }
   };
-
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} contentLabel="Edit Item Modal">
       <h2>Edit Item</h2>

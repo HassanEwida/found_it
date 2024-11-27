@@ -1,0 +1,79 @@
+.ReactModal__Content {
+  font-family: Arial, sans-serif;
+  color: #e0e0e0 !important; /* Light text for better readability on dark backgrounds */
+  background-color: #2c2c2c !important; /* Dark gray background for the modal */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  margin: 0 auto;
+  border: none !important; /* Remove any default borders */
+}
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ReactModal__Content .input-wrapper {
+  margin-bottom: 15px;
+  position: relative;
+  background-color: #3a3a3a; /* Darker background for form elements */
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.ReactModal__Content .input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background-color: #4a4a4a; /* Slightly lighter background for input fields */
+  color: #e0e0e0; /* Light text color for input */
+}
+
+.ReactModal__Content .input-field::placeholder {
+  color: #999;
+}
+
+.ReactModal__Content .input-label {
+  position: absolute;
+  left: 10px;
+  top: -8px;
+  background-color: #3a3a3a; /* Match the input-wrapper background */
+  padding: 0 5px;
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* Add a title style for the modal */
+.ReactModal__Content h2 {
+  color: #f0f0f0; /* Light color for the title */
+  margin-bottom: 20px;
+}
+
+/* Additional styles to ensure dark theme */
+.ReactModal__Content * {
+  color: #e0e0e0;
+}
+
+.ReactModal__Content select {
+  background-color: #4a4a4a;
+  color: #e0e0e0;
+}
+
+.ReactModal__Content button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ReactModal__Content button:hover {
+  background-color: #0056b3;
+}
