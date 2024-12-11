@@ -25,11 +25,11 @@ const getAllMyItems = async (req, res, next) => {
 }
 
 const modifyItem = async (req, res, next) => {
+  const { id } = req.params;
   const item = req.body;
 
-  await Item.updateOne({ _id: item._id}, item);
-
-  const updatedItem = await Item.findOne({ _id: item._id});
+  await Item.updateOne({ _id: id }, item);
+  const updatedItem = await Item.findOne({ _id: id });
 
   res.status(200).send(updatedItem);
 }

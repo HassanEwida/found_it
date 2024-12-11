@@ -6,7 +6,7 @@ const router = express.Router();
 router.post('/listItem', listItem);
 router.get('/search', searchItem)
 router.get('/getAllMyItems', getAllMyItems)
-router.put('/modifyItem', modifyItem)
+router.put('/modifyItem/:id', modifyItem)
 router.delete('/deleteItem/:itemId', deleteItem)
 
 module.exports = { router }
